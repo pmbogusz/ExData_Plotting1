@@ -3,7 +3,7 @@
 # Set working directory - folder with "household_power_consumption.txt" data file
 setwd("D:/Coursera/13. Exploratory Data Analysis/Course Project 1")
 
-# readind whole dataset in to dataframe "data_temp"
+# reading whole dataset in to dataframe "data_temp"
 data_temp <- read.csv("household_power_consumption.txt", sep=";", header = T)
 
 # creating new column with POSIX timestamp based on data_temp$Date and data_temp$Time
@@ -16,7 +16,7 @@ data_temp$TimeStamp <- strptime(paste(as.character(data_temp$Date),as.character(
 # this will speed up whole processing 
 data_power <- data_temp[as.Date(data_temp$TimeStamp) >= as.Date("2007-02-01") & as.Date(data_temp$TimeStamp) < as.Date("2007-02-03"), ]
 
-# convering factors in to numeric values - columns from 3 to 9 will be converted
+# converting factors in to numeric values - columns from 3 to 9 will be converted
 for( x in 3:9){ 
 	data_power[ ,x]  <-as.numeric(as.character(data_power[ ,x]))
 }
